@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "grunt",
+			"path": "project/grunt",
+			"problemMatcher": [],
+			"label": "npm: grunt - project/grunt",
+			"detail": "cd /var/labsstorage/home/sriram2k4/htdocs/grunt-js/project/grunt && grunt"
+		}
+	]
+}
