@@ -8,6 +8,12 @@
 			"problemMatcher": [],
 			"label": "npm: grunt - project/grunt",
 			"detail": "cd /var/labsstorage/home/sriram2k4/htdocs/grunt-js/project/grunt && grunt"
+		},
+		{
+			"label": "Apache Error Log",
+			"type": "shell",
+			"command": "tail -f /var/log/apache2/error.log",
+			"problemMatcher": []
 		}
 	]
 }

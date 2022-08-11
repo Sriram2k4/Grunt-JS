@@ -1,0 +1,37 @@
+.outer {
+	h1 {
+		color: green;
+		text-align: center;
+	}
+
+	h2 {
+		color: grey;
+	}
+
+	h3 {
+		color: red;
+	}
+
+	h4 {
+		color: white;
+	}
+
+	.inner {
+		h1 {
+			color: cyan;
+			text-align: center;
+		}
+
+		h2 {
+			color: gold;
+		}
+
+		h3 {
+			color: blue;
+		}
+
+		h4 {
+			color: purple;
+		}
+	}
+}

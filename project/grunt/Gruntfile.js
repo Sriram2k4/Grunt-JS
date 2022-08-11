@@ -31,6 +31,12 @@ module.exports = function (grunt) {
 					'../js/**/*.js',
 				],
 				dest: 'dist/script.js',
+			},
+			scss: {
+				src: [
+					'../scss/**/*.scss',
+				],
+				dest: 'dist/app.scss',
 			}
 		},
 		cssmin: {
@@ -38,13 +44,27 @@ module.exports = function (grunt) {
 				mergeIntoShorthands: false,
 				roundingPrecision: -1
 			},
-			target: {
+			css: {
 				files: {
 					'../../htdocs/css/style.min.css': ['dist/style.css']
 				}
+			},
+			scss: {
+				files: {
+					'../../htdocs/css/app.min.css': ['../../htdocs/css/app.css']
+				}
+			},
+		},
+		sass: {                              // Task
+			dist: {                            // Target
+				options: {                       // Target options
+					style: 'expanded'
+				},
+				files: {                         // Dictionary of files
+					'../../htdocs/css/app.css': 'dist/app.scss',       // 'destination': 'source'
+				}
 			}
 		},
-
 		uglify: {
 			js: {
 				options: {
@@ -76,7 +96,7 @@ module.exports = function (grunt) {
 				files: [
 					'../css/**/*.css',
 				],
-				tasks: ['concat', 'cssmin'],
+				tasks: ['concat:css', 'cssmin:css'],
 				options: {
 					spawn: false,
 				},
@@ -85,7 +105,16 @@ module.exports = function (grunt) {
 				files: [
 					'../js/**/*.js',
 				],
-				tasks: ['concat', 'uglify', 'obfuscator'],
+				tasks: ['concat:js', 'uglify', 'obfuscator'],
+				options: {
+					spawn: false,
+				},
+			},
+			scss: {
+				files: [
+					'../scss/**/*.scss',
+				],
+				tasks: ['concat:scss', 'sass', 'cssmin:scss'],
 				options: {
 					spawn: false,
 				},
@@ -96,12 +125,13 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-obfuscator');
 
 	grunt.registerTask('css', ['concat', 'cssmin']);
 	grunt.registerTask('js', ['concat', 'uglify', 'obfuscator']);
-	grunt.registerTask("default", ['copy', 'concat', 'cssmin', 'uglify', 'obfuscator', 'watch']);
+	grunt.registerTask("default", ['copy', 'concat', 'sass', 'cssmin:css', 'cssmin:scss', 'uglify', 'obfuscator', 'watch']);
 
 };

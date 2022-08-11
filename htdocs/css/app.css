@@ -1,0 +1,29 @@
+/* Processed by Sriram onLast Sync: 4/7/2022 @ 4:45:33*/
+.outer h1 {
+  color: green;
+  text-align: center;
+}
+.outer h2 {
+  color: grey;
+}
+.outer h3 {
+  color: red;
+}
+.outer h4 {
+  color: white;
+}
+.outer .inner h1 {
+  color: cyan;
+  text-align: center;
+}
+.outer .inner h2 {
+  color: gold;
+}
+.outer .inner h3 {
+  color: blue;
+}
+.outer .inner h4 {
+  color: purple;
+}
+
+/*# sourceMappingURL=app.css.map */
